@@ -1,0 +1,29 @@
+
+@mixin ring($color,$size){
+    border-radius: 50%;
+    height: $size;
+    width: $size;
+    border: calc(0.1 * $size) solid $color;
+    box-shadow: 0 0 calc(0.2 * $size) $color;
+    background-color: transparent;
+
+}
+
+@for $i from 1 through 6 {
+    .ring-#{$i} {
+        @include ring(blue, 10px * $i);
+        margin-left: -5px; /* Ajustez cette valeur pour obtenir le chevauchement souhaité */
+    }
+    .ring-container > .ring-#{$i}:first-child {
+        margin-left: 0; /* Pas de marge pour le premier anneau */
+    }
+}
+
+.ring-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: -1px; /* Ajustez cette valeur pour obtenir le chevauchement souhaité */
+}
+
+
